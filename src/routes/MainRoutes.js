@@ -5,8 +5,7 @@ import { redirect } from 'react-router-dom';
 import Loadable from 'components/Loadable';
 import MainLayout from 'layout/MainLayout';
 
-// render - dashboard
-const DashboardDefault = Loadable(lazy(() => import('pages/dashboard')));
+const HomePage = Loadable(lazy(() => import('pages/home')));
 
 // render - sample page
 const SamplePage = Loadable(lazy(() => import('pages/extra-pages/SamplePage')));
@@ -29,22 +28,17 @@ const MainRoutes = {
     // },
     element: <MainLayout />,
     children: [
+        // {
+        //     path: '/',
+        //     element: <DashboardDefault />
+        // },
         {
             path: '/',
-            element: <DashboardDefault />
+            element: <HomePage />
         },
         {
             path: 'color',
             element: <Color />
-        },
-        {
-            path: 'dashboard',
-            children: [
-                {
-                    path: 'default',
-                    element: <DashboardDefault />
-                }
-            ]
         },
         {
             path: 'sample-page',

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 
-// material-ui
 import {
     Button,
     Checkbox,
@@ -18,22 +17,19 @@ import {
     Typography
 } from '@mui/material';
 
-// third party
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 
-// project import
 import FirebaseSocial from './FirebaseSocial';
 import AnimateButton from 'components/@extended/AnimateButton';
 
-// assets
 import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
-
-// ============================|| FIREBASE - LOGIN ||============================ //
+import { useDispatch } from 'react-redux';
+import { authActions } from 'redux/slides/authSlide';
 
 const AuthLogin = () => {
+    const dispatch = useDispatch();
     const [checked, setChecked] = React.useState(false);
-
     const [showPassword, setShowPassword] = React.useState(false);
     const handleClickShowPassword = () => {
         setShowPassword(!showPassword);
@@ -44,16 +40,21 @@ const AuthLogin = () => {
     };
 
     const onSubmit = async (values, { setErrors, setStatus, setSubmitting }) => {
-        console.log('hhhehehhe', values);
-
-        try {
-            setStatus({ success: false });
-            setSubmitting(false);
-        } catch (err) {
-            setStatus({ success: false });
-            setErrors({ submit: err.message });
-            setSubmitting(false);
-        }
+        console.log('dispatch something');
+        dispatch(
+            authActions.login({
+                email: values.email,
+                password: values.password
+            })
+        );
+        // try {
+        //     setStatus({ success: false });
+        //     setSubmitting(false);
+        // } catch (err) {
+        //     setStatus({ success: false });
+        //     setErrors({ submit: err.message });
+        //     setSubmitting(false);
+        // }
     };
 
     return (

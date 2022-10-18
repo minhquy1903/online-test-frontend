@@ -20,12 +20,12 @@ const AntIcons = Loadable(lazy(() => import('pages/components-overview/AntIcons'
 
 const MainRoutes = {
     path: '/',
-    // loader: async () => {
-    //     const user = null;
-    //     if (!user) {
-    //         return redirect('/login');
-    //     }
-    // },
+    loader: async () => {
+        const user = null;
+        if (!user) {
+            return redirect('/login');
+        }
+    },
     element: <MainLayout />,
     children: [
         // {

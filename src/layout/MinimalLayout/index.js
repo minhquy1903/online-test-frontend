@@ -1,9 +1,9 @@
 import { Outlet } from 'react-router-dom';
-
-// ==============================|| MINIMAL LAYOUT ||============================== //
+import NavigateSetter from 'utils/NavigateSetter';
 
 const MinimalLayout = () => (
     <>
+        <NavigateSetter />
         <Outlet />
     </>
 );

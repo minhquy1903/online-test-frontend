@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-
-// material-ui
 import {
     Box,
     Button,
@@ -15,26 +13,24 @@ import {
     InputLabel,
     OutlinedInput,
     Stack,
-    Typography
+    Typography,
+    CircularProgress
 } from '@mui/material';
-
-// third party
 import * as Yup from 'yup';
 import { Formik } from 'formik';
-
-// project import
 import FirebaseSocial from './FirebaseSocial';
 import AnimateButton from 'components/@extended/AnimateButton';
 import { strengthColor, strengthIndicator } from 'utils/password-strength';
-
-// assets
 import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
-
-// ============================|| FIREBASE - REGISTER ||============================ //
+import { useDispatch, useSelector } from 'react-redux';
+import { registerActions } from 'redux/slides/registerSlide';
 
 const AuthRegister = () => {
+    const dispatch = useDispatch();
     const [level, setLevel] = useState();
     const [showPassword, setShowPassword] = useState(false);
+    const registerLoading = useSelector((state) => state.register.loading);
+
     const handleClickShowPassword = () => {
         setShowPassword(!showPassword);
     };
@@ -52,77 +48,64 @@ const AuthRegister = () => {
         changePassword('');
     }, []);
 
+    const onSubmit = async (values, { setErrors, setStatus, setSubmitting }) => {
+        dispatch(
+            registerActions.register({
+                name: values.name,
+                email: values.email,
+                password: values.password,
+                type: 1
+            })
+        );
+
+        // try {
+        //     setStatus({ success: false });
+        //     setSubmitting(false);
+        // } catch (err) {
+        //     console.error(err);
+        //     setStatus({ success: false });
+        //     setErrors({ submit: err.message });
+        //     setSubmitting(false);
+        // }
+    };
+
     return (
         <>
             <Formik
                 initialValues={{
-                    firstname: '',
-                    lastname: '',
-                    email: '',
-                    company: '',
-                    password: '',
-                    submit: null
+                    name: 'Minh Quy',
+                    email: 'coihandanba@gmail.com',
+                    password: '1231242341',
+                    type: 1
                 }}
                 validationSchema={Yup.object().shape({
-                    firstname: Yup.string().max(255).required('First Name is required'),
-                    lastname: Yup.string().max(255).required('Last Name is required'),
+                    name: Yup.string().max(255).required('Name is required'),
                     email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
-                    password: Yup.string().max(255).required('Password is required')
+                    password: Yup.string().max(255).required('Password is required'),
+                    type: Yup.number()
                 })}
-                onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
-                    try {
-                        setStatus({ success: false });
-                        setSubmitting(false);
-                    } catch (err) {
-                        console.error(err);
-                        setStatus({ success: false });
-                        setErrors({ submit: err.message });
-                        setSubmitting(false);
-                    }
-                }}
+                onSubmit={onSubmit}
             >
                 {({ errors, handleBlur, handleChange, handleSubmit, isSubmitting, touched, values }) => (
                     <form noValidate onSubmit={handleSubmit}>
                         <Grid container spacing={3}>
-                            <Grid item xs={12} md={6}>
+                            <Grid item xs={12}>
                                 <Stack spacing={1}>
-                                    <InputLabel htmlFor="firstname-signup">First Name*</InputLabel>
+                                    <InputLabel htmlFor="name-signup">Name*</InputLabel>
                                     <OutlinedInput
-                                        id="firstname-login"
-                                        type="firstname"
-                                        value={values.firstname}
-                                        name="firstname"
+                                        id="name-login"
+                                        type="name"
+                                        value={values.name}
+                                        name="name"
                                         onBlur={handleBlur}
                                         onChange={handleChange}
                                         placeholder=""
                                         fullWidth
-                                        error={Boolean(touched.firstname && errors.firstname)}
+                                        error={Boolean(touched.name && errors.name)}
                                     />
-                                    {touched.firstname && errors.firstname && (
-                                        <FormHelperText error id="helper-text-firstname-signup">
-                                            {errors.firstname}
-                                        </FormHelperText>
-                                    )}
-                                </Stack>
-                            </Grid>
-                            <Grid item xs={12} md={6}>
-                                <Stack spacing={1}>
-                                    <InputLabel htmlFor="lastname-signup">Last Name*</InputLabel>
-                                    <OutlinedInput
-                                        fullWidth
-                                        error={Boolean(touched.lastname && errors.lastname)}
-                                        id="lastname-signup"
-                                        type="lastname"
-                                        value={values.lastname}
-                                        name="lastname"
-                                        onBlur={handleBlur}
-                                        onChange={handleChange}
-                                        placeholder=""
-                                        inputProps={{}}
-                                    />
-                                    {touched.lastname && errors.lastname && (
-                                        <FormHelperText error id="helper-text-lastname-signup">
-                                            {errors.lastname}
+                                    {touched.name && errors.name && (
+                                        <FormHelperText error id="helper-text-name-signup">
+                                            {errors.name}
                                         </FormHelperText>
                                     )}
                                 </Stack>
@@ -248,7 +231,7 @@ const AuthRegister = () => {
                                         variant="contained"
                                         color="primary"
                                     >
-                                        Create Account
+                                        {registerLoading && <CircularProgress size={20} color="info" />} &nbsp; Create Account
                                     </Button>
                                 </AnimateButton>
                             </Grid>

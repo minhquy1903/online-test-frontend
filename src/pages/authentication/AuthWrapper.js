@@ -11,8 +11,6 @@ import AuthFooter from 'components/cards/AuthFooter';
 // assets
 import AuthBackground from 'assets/images/auth/AuthBackground';
 
-// ==============================|| AUTHENTICATION - WRAPPER ||============================== //
-
 const AuthWrapper = ({ children }) => (
     <Box sx={{ minHeight: '100vh' }}>
         <AuthBackground />

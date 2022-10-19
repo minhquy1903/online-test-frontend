@@ -40,7 +40,6 @@ const AuthLogin = () => {
     };
 
     const onSubmit = async (values, { setErrors, setStatus, setSubmitting }) => {
-        console.log('dispatch something');
         dispatch(
             authActions.login({
                 email: values.email,

@@ -10,6 +10,7 @@ const App = () => (
     <ThemeCustomization>
         <Provider store={store}>
             {/* <ScrollTop> */}
+            {/* <Navigator /> */}
             <RouterProvider router={router} />
             {/* </ScrollTop> */}
         </Provider>

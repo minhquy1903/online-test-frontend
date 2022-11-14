@@ -5,14 +5,27 @@ import ThemeCustomization from 'themes';
 import { RouterProvider } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './redux/store';
+import { persistor } from './redux/store';
+import { PersistGate } from 'redux-persist/integration/react';
+import './index.scss';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => (
     <ThemeCustomization>
         <Provider store={store}>
-            {/* <ScrollTop> */}
-            {/* <Navigator /> */}
-            <RouterProvider router={router} />
-            {/* </ScrollTop> */}
+            <ToastContainer
+                position="top-right"
+                autoClose={3000}
+                hideProgressBar={true}
+                newestOnTop={false}
+                pauseOnFocusLoss
+                pauseOnHover
+                theme="light"
+            />
+            <PersistGate loading={null} persistor={persistor}>
+                <RouterProvider router={router} />
+            </PersistGate>
         </Provider>
     </ThemeCustomization>
 );

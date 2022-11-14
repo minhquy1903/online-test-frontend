@@ -23,7 +23,7 @@ import AnimateButton from 'components/@extended/AnimateButton';
 import { strengthColor, strengthIndicator } from 'utils/password-strength';
 import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { registerActions } from 'redux/slides/registerSlide';
+import { registerActions } from 'redux/slides/registerSlice';
 
 const AuthRegister = () => {
     const dispatch = useDispatch();
@@ -73,9 +73,9 @@ const AuthRegister = () => {
         <>
             <Formik
                 initialValues={{
-                    name: 'Minh Quy',
-                    email: 'coihandanba@gmail.com',
-                    password: '1231242341',
+                    name: '',
+                    email: '',
+                    password: '',
                     type: 1
                 }}
                 validationSchema={Yup.object().shape({
@@ -99,7 +99,7 @@ const AuthRegister = () => {
                                         name="name"
                                         onBlur={handleBlur}
                                         onChange={handleChange}
-                                        placeholder=""
+                                        placeholder="Enter your name"
                                         fullWidth
                                         error={Boolean(touched.name && errors.name)}
                                     />
@@ -110,27 +110,6 @@ const AuthRegister = () => {
                                     )}
                                 </Stack>
                             </Grid>
-                            {/* <Grid item xs={12}>
-                                <Stack spacing={1}>
-                                    <InputLabel htmlFor="company-signup">Company</InputLabel>
-                                    <OutlinedInput
-                                        fullWidth
-                                        error={Boolean(touched.company && errors.company)}
-                                        id="company-signup"
-                                        value={values.company}
-                                        name="company"
-                                        onBlur={handleBlur}
-                                        onChange={handleChange}
-                                        placeholder="Demo Inc."
-                                        inputProps={{}}
-                                    />
-                                    {touched.company && errors.company && (
-                                        <FormHelperText error id="helper-text-company-signup">
-                                            {errors.company}
-                                        </FormHelperText>
-                                    )}
-                                </Stack>
-                            </Grid> */}
                             <Grid item xs={12}>
                                 <Stack spacing={1}>
                                     <InputLabel htmlFor="email-signup">Email Address*</InputLabel>
@@ -143,7 +122,7 @@ const AuthRegister = () => {
                                         name="email"
                                         onBlur={handleBlur}
                                         onChange={handleChange}
-                                        placeholder="demo@company.com"
+                                        placeholder="Enter your email"
                                         inputProps={{}}
                                     />
                                     {touched.email && errors.email && (

@@ -25,7 +25,7 @@ import AnimateButton from 'components/@extended/AnimateButton';
 
 import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
 import { useDispatch } from 'react-redux';
-import { authActions } from 'redux/slides/authSlide';
+import { authActions } from 'redux/slides/authSlice';
 
 const AuthLogin = () => {
     const dispatch = useDispatch();
@@ -40,28 +40,28 @@ const AuthLogin = () => {
     };
 
     const onSubmit = async (values, { setErrors, setStatus, setSubmitting }) => {
-        dispatch(
-            authActions.login({
-                email: values.email,
-                password: values.password
-            })
-        );
-        // try {
-        //     setStatus({ success: false });
-        //     setSubmitting(false);
-        // } catch (err) {
-        //     setStatus({ success: false });
-        //     setErrors({ submit: err.message });
-        //     setSubmitting(false);
-        // }
+        try {
+            dispatch(
+                authActions.login({
+                    email: values.email,
+                    password: values.password
+                })
+            );
+            setStatus({ success: false });
+            setSubmitting(false);
+        } catch (err) {
+            setStatus({ success: false });
+            setErrors({ submit: err.message });
+            setSubmitting(false);
+        }
     };
 
     return (
         <>
             <Formik
                 initialValues={{
-                    email: 'coihandanba@gmail.com',
-                    password: 'eweqweq',
+                    email: '',
+                    password: '',
                     submit: null
                 }}
                 validationSchema={Yup.object().shape({

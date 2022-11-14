@@ -14,22 +14,30 @@ import {
     Paper,
     Popper,
     Stack,
-    Tab,
-    Tabs,
-    Typography
+    Typography,
+    Button
 } from '@mui/material';
 
 // project import
 import MainCard from 'components/MainCard';
 import Transitions from 'components/@extended/Transitions';
 import ProfileTab from './ProfileTab';
-import SettingTab from './SettingTab';
+// import SettingTab from './SettingTab';
 
 // assets
-import avatar1 from 'assets/images/users/avatar-1.png';
-import { LogoutOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons';
+import defaultAvatar from 'assets/images/users/default-avatar.png';
+import { LogoutOutlined } from '@ant-design/icons';
+import { useDispatch, useSelector } from 'react-redux';
+import { authActions } from 'redux/slides/authSlice';
 
 // tab panel wrapper
+
+TabPanel.propTypes = {
+    children: PropTypes.node,
+    index: PropTypes.any.isRequired,
+    value: PropTypes.any.isRequired
+};
+
 function TabPanel({ children, value, index, ...other }) {
     return (
         <div role="tabpanel" hidden={value !== index} id={`profile-tabpanel-${index}`} aria-labelledby={`profile-tab-${index}`} {...other}>
@@ -38,26 +46,12 @@ function TabPanel({ children, value, index, ...other }) {
     );
 }
 
-TabPanel.propTypes = {
-    children: PropTypes.node,
-    index: PropTypes.any.isRequired,
-    value: PropTypes.any.isRequired
-};
-
-function a11yProps(index) {
-    return {
-        id: `profile-tab-${index}`,
-        'aria-controls': `profile-tabpanel-${index}`
-    };
-}
-
-// ==============================|| HEADER CONTENT - PROFILE ||============================== //
-
 const Profile = () => {
     const theme = useTheme();
-
+    const user = useSelector((state) => state.auth.currentUser);
+    const dispatch = useDispatch();
     const handleLogout = async () => {
-        // logout
+        dispatch(authActions.logout());
     };
 
     const anchorRef = useRef(null);
@@ -97,10 +91,11 @@ const Profile = () => {
                 onClick={handleToggle}
             >
                 <Stack direction="row" spacing={2} alignItems="center" sx={{ p: 0.5 }}>
-                    <Avatar alt="profile user" src={avatar1} sx={{ width: 32, height: 32 }} />
-                    <Typography variant="subtitle1">Minh Quy</Typography>
+                    <Avatar alt="profile user" src={defaultAvatar} sx={{ width: 32, height: 32 }} />
+                    <Typography variant="subtitle1">{user?.name}</Typography>
                 </Stack>
             </ButtonBase>
+
             <Popper
                 placement="bottom-end"
                 open={open}
@@ -139,11 +134,11 @@ const Profile = () => {
                                             <Grid container justifyContent="space-between" alignItems="center">
                                                 <Grid item>
                                                     <Stack direction="row" spacing={1.25} alignItems="center">
-                                                        <Avatar alt="profile user" src={avatar1} sx={{ width: 32, height: 32 }} />
+                                                        <Avatar alt="profile user" src={defaultAvatar} sx={{ width: 32, height: 32 }} />
                                                         <Stack>
-                                                            <Typography variant="h6">Minh Quy</Typography>
+                                                            <Typography variant="h6">{user?.name}</Typography>
                                                             <Typography variant="body2" color="textSecondary">
-                                                                Teacher
+                                                                {user?.type === 1 ? 'Teacher' : 'Student'}
                                                             </Typography>
                                                         </Stack>
                                                     </Stack>

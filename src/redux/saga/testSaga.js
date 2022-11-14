@@ -1,15 +1,15 @@
-import { register } from 'api/authApi';
+import { saveDraft } from 'api/testApi';
 import { takeEvery, call, put } from 'redux-saga/effects';
-import { registerActions } from 'redux/slides/registerSlice';
+import { testActions } from 'redux/slides/testSlice';
 import History from 'utils/History';
 import notifier from 'utils/notifier';
 
-function* handleRegister(action) {
+function* handleSaveDraft(action) {
     try {
-        const res = yield call(register, action.payload);
+        const res = yield call(saveDraft, action.payload);
 
         if (res.errors == null) {
-            yield put(registerActions.registerSuccess());
+            yield put(testActions.saveDraft());
             notifier.success('Register successfully!');
             History.push('/login');
             return;
@@ -20,6 +20,6 @@ function* handleRegister(action) {
     }
 }
 
-export function* registerSaga() {
-    yield takeEvery(registerActions.register.type, handleRegister);
+export function* saveDraftSaga() {
+    yield takeEvery(testActions.saveDraft.type, handleSaveDraft);
 }

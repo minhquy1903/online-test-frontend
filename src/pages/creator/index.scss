@@ -2,8 +2,9 @@
     width: 100%;
     height: 93vh;
     display: flex;
-    .question-nav{
+    .question-nav {
         box-shadow: rgba(0, 0, 0, 0.24) 3px 3px 8px;
+        min-width: 160px;
         .question-tabs {
             height: 80vh;
             overflow-y: scroll;
@@ -14,7 +15,7 @@
                 align-items: center;
                 justify-content: space-between;
                 border-radius: 4px;
-                span{
+                span {
                     padding: 0 14px;
                 }
             }
@@ -26,7 +27,7 @@
                 align-items: center;
                 justify-content: space-between;
                 border-radius: 4px;
-                span{
+                span {
                     padding: 0 14px;
                 }
                 background-color: rgba(0, 0, 0, 0.04);
@@ -44,57 +45,68 @@
                 cursor: pointer;
             }
         }
-
     }
-    .test-creator{
-        width:85%;
-        
-        .wrapper-create-question{
+    .test-creator {
+        width: 100%;
+
+        .wrapper-create-question {
             padding: 20px;
-            .question-item {
-                height: 250px;
-            }
 
-            .text-answer{
+            .test-form-wrapper {
                 display: flex;
-                flex-direction: column;
-                .label-question {
-                    font-weight: bold;
-                    font-size: 16px;
+
+                .test-form {
+                    margin-left: 16px;
+                    width: 15%;
                 }
 
-                .label-test{
-                    display: flex;
-                    align-items: center;
+                .question-form {
+                    width: 85%;
+                    .question-item {
+                        height: 250px;
+                    }
 
-                    .correct-answer{
-                        display: block;
-                        height: 16px;
-                        width: 16px;
-                        margin-bottom: 6px;
+                    .text-answer {
+                        display: flex;
+                        flex-direction: column;
+                        .label-question {
+                            font-weight: bold;
+                            font-size: 16px;
+                        }
+
+                        .label-test {
+                            display: flex;
+                            align-items: center;
+
+                            .correct-answer {
+                                display: block;
+                                height: 16px;
+                                width: 16px;
+                                margin-bottom: 6px;
+                            }
+                        }
+                        label {
+                            margin-bottom: 4px;
+                            padding-right: 6px;
+                        }
+
+                        .textarea-input {
+                            display: flex;
+                            align-items: center;
+                            background-color: white;
+                            border-radius: 4px;
+                            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+                            padding-left: 4px;
+                            textarea {
+                                width: 90%;
+                                outline: none;
+                                border: none;
+                                padding: 16px 12px;
+                                font-size: 1.1rem;
+                            }
+                        }
                     }
                 }
-                label{
-                    margin-bottom: 4px;
-                    padding-right: 6px;
-                }
-
-                .textarea-input{
-                    display: flex;
-                    align-items: center;
-                    background-color: white;
-                    border-radius: 4px;
-                    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-                    padding-left: 4px;
-                    textarea{
-                        width: 90%;
-                        outline: none;
-                        border: none;
-                        padding: 16px 12px;
-                        font-size: 1.1rem;
-                    }
-                }
-                
             }
         }
     }

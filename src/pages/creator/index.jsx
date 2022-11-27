@@ -1,4 +1,6 @@
 import QuestionNav from './QuestionNav/index';
+import Box from '@mui/material/Box';
+
 import './index.scss';
 const Creator = () => {
     return (

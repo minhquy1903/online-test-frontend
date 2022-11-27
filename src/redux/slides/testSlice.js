@@ -1,19 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    question: '',
-    a: '',
-    b: '',
-    c: '',
-    d: '',
-    correctAnswer: ''
+    name: '',
+    subjectId: '',
+    type: 1,
+    status: 1,
+    questions: []
 };
 
 const testSlice = createSlice({
     name: 'test',
     initialState,
     reducers: {
-        saveDraft(state, action) {
+        createTest(state, action) {
             state = action.payload;
         }
     }

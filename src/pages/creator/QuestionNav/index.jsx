@@ -1,11 +1,8 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/Button';
+import AddBoxIcon from '@mui/icons-material/AddBox';
 import DeleteIcon from '@mui/icons-material/Delete';
 import QuestionCreator from '../QuestionCreator/QuestionCreator';
 
@@ -50,9 +47,9 @@ export default function QuestionNav() {
                 </div>
 
                 <div style={{ padding: '0 20px', marginTop: 10 }}>
-                    <Button variant="contained" onClick={handleAddQuestion}>
-                        Add question
-                    </Button>
+                    <IconButton variant="contained" onClick={handleAddQuestion}>
+                        <AddBoxIcon />
+                    </IconButton>
                 </div>
             </div>
 

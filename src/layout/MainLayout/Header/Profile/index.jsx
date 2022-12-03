@@ -119,7 +119,7 @@ const Profile = () => {
                         {open && (
                             <Paper
                                 sx={{
-                                    boxShadow: theme.customShadows.z1,
+                                    boxShadow: 'box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;',
                                     width: 290,
                                     minWidth: 240,
                                     maxWidth: 290,
@@ -136,7 +136,7 @@ const Profile = () => {
                                                     <Stack direction="row" spacing={1.25} alignItems="center">
                                                         <Avatar alt="profile user" src={defaultAvatar} sx={{ width: 32, height: 32 }} />
                                                         <Stack>
-                                                            <Typography variant="h6">{user?.name}</Typography>
+                                                            <Typography>{user?.name}</Typography>
                                                             <Typography variant="body2" color="textSecondary">
                                                                 {user?.type === 1 ? 'Teacher' : 'Student'}
                                                             </Typography>
@@ -144,7 +144,7 @@ const Profile = () => {
                                                     </Stack>
                                                 </Grid>
                                                 <Grid item>
-                                                    <IconButton size="large" color="secondary" onClick={handleLogout}>
+                                                    <IconButton size="medium" color="secondary" onClick={handleLogout}>
                                                         <LogoutOutlined />
                                                     </IconButton>
                                                 </Grid>

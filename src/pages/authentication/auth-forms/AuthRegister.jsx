@@ -57,16 +57,6 @@ const AuthRegister = () => {
                 type: 1
             })
         );
-
-        // try {
-        //     setStatus({ success: false });
-        //     setSubmitting(false);
-        // } catch (err) {
-        //     console.error(err);
-        //     setStatus({ success: false });
-        //     setErrors({ submit: err.message });
-        //     setSubmitting(false);
-        // }
     };
 
     return (
@@ -95,6 +85,7 @@ const AuthRegister = () => {
                                     <OutlinedInput
                                         id="name-login"
                                         type="name"
+                                        size="small"
                                         value={values.name}
                                         name="name"
                                         onBlur={handleBlur}
@@ -117,6 +108,7 @@ const AuthRegister = () => {
                                         fullWidth
                                         error={Boolean(touched.email && errors.email)}
                                         id="email-login"
+                                        size="small"
                                         type="email"
                                         value={values.email}
                                         name="email"
@@ -138,6 +130,7 @@ const AuthRegister = () => {
                                     <OutlinedInput
                                         fullWidth
                                         error={Boolean(touched.password && errors.password)}
+                                        size="small"
                                         id="password-signup"
                                         type={showPassword ? 'text' : 'password'}
                                         value={values.password}
@@ -154,7 +147,7 @@ const AuthRegister = () => {
                                                     onClick={handleClickShowPassword}
                                                     onMouseDown={handleMouseDownPassword}
                                                     edge="end"
-                                                    size="large"
+                                                    size="small"
                                                 >
                                                     {showPassword ? <EyeOutlined /> : <EyeInvisibleOutlined />}
                                                 </IconButton>

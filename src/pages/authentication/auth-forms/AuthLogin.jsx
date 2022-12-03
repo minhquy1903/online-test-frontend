@@ -78,6 +78,7 @@ const AuthLogin = () => {
                                     <InputLabel htmlFor="email-login">Email</InputLabel>
                                     <OutlinedInput
                                         id="email-login"
+                                        size="small"
                                         type="email"
                                         value={values.email}
                                         name="email"
@@ -99,6 +100,7 @@ const AuthLogin = () => {
                                     <InputLabel htmlFor="password-login">Password</InputLabel>
                                     <OutlinedInput
                                         fullWidth
+                                        size="small"
                                         error={Boolean(touched.password && errors.password)}
                                         id="-password-login"
                                         type={showPassword ? 'text' : 'password'}
@@ -141,9 +143,9 @@ const AuthLogin = () => {
                                                 size="small"
                                             />
                                         }
-                                        label={<Typography variant="h6">Keep me sign in</Typography>}
+                                        label={<Typography>Keep me sign in</Typography>}
                                     />
-                                    <Link variant="h6" component={RouterLink} to="" color="text.primary">
+                                    <Link component={RouterLink} to="" color="text.primary">
                                         Forgot Password?
                                     </Link>
                                 </Stack>

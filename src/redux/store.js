@@ -6,6 +6,7 @@ import { registerReducers } from './slides/registerSlice';
 import storage from 'redux-persist/lib/storage';
 import { persistReducer, persistStore } from 'redux-persist';
 import { testReducers } from './slides/testSlice';
+import { questionReducers } from './slides/questionSlice';
 
 let sagaMiddleware = createSagaMiddleware();
 
@@ -19,7 +20,8 @@ const persistConfig = {
 const rootReducer = combineReducers({
     auth: authReducers,
     register: registerReducers,
-    test: testReducers
+    test: testReducers,
+    question: questionReducers
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

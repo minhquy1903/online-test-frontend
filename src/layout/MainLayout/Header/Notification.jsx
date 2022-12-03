@@ -24,10 +24,8 @@ import {
 import MainCard from 'components/MainCard';
 import Transitions from 'components/@extended/Transitions';
 
-// assets
 import { BellOutlined, CloseOutlined, GiftOutlined, MessageOutlined, SettingOutlined } from '@ant-design/icons';
 
-// sx styles
 const avatarSX = {
     width: 36,
     height: 36,
@@ -43,8 +41,6 @@ const actionSX = {
 
     transform: 'none'
 };
-
-// ==============================|| HEADER CONTENT - NOTIFICATION ||============================== //
 
 const Notification = () => {
     const theme = useTheme();
@@ -104,7 +100,7 @@ const Notification = () => {
                     <Transitions type="fade" in={open} {...TransitionProps}>
                         <Paper
                             sx={{
-                                boxShadow: theme.customShadows.z1,
+                                boxShadow: 'box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;',
                                 width: '100%',
                                 minWidth: 285,
                                 maxWidth: 420,
@@ -149,12 +145,9 @@ const Notification = () => {
                                             </ListItemAvatar>
                                             <ListItemText
                                                 primary={
-                                                    <Typography variant="h6">
-                                                        It&apos;s{' '}
-                                                        <Typography component="span" variant="subtitle1">
-                                                            Cristina danny&apos;s
-                                                        </Typography>{' '}
-                                                        birthday today.
+                                                    <Typography>
+                                                        It&apos;s <Typography component="span">Cristina danny&apos;s</Typography> birthday
+                                                        today.
                                                     </Typography>
                                                 }
                                                 secondary="2 min ago"
@@ -179,7 +172,7 @@ const Notification = () => {
                                             </ListItemAvatar>
                                             <ListItemText
                                                 primary={
-                                                    <Typography variant="h6">
+                                                    <Typography>
                                                         <Typography component="span" variant="subtitle1">
                                                             Aida Burg
                                                         </Typography>{' '}
@@ -208,7 +201,7 @@ const Notification = () => {
                                             </ListItemAvatar>
                                             <ListItemText
                                                 primary={
-                                                    <Typography variant="h6">
+                                                    <Typography>
                                                         Your Profile is Complete &nbsp;
                                                         <Typography component="span" variant="subtitle1">
                                                             60%
@@ -237,7 +230,7 @@ const Notification = () => {
                                             </ListItemAvatar>
                                             <ListItemText
                                                 primary={
-                                                    <Typography variant="h6">
+                                                    <Typography>
                                                         <Typography component="span" variant="subtitle1">
                                                             Cristina Danny
                                                         </Typography>{' '}
@@ -257,13 +250,7 @@ const Notification = () => {
                                         </ListItemButton>
                                         <Divider />
                                         <ListItemButton sx={{ textAlign: 'center', py: `${12}px !important` }}>
-                                            <ListItemText
-                                                primary={
-                                                    <Typography variant="h6" color="primary">
-                                                        View All
-                                                    </Typography>
-                                                }
-                                            />
+                                            <ListItemText primary={<Typography color="primary">View All</Typography>} />
                                         </ListItemButton>
                                     </List>
                                 </MainCard>

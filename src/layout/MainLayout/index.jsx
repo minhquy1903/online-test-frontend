@@ -26,19 +26,21 @@ const MainLayout = (props) => {
 
     return (
         <Box sx={{ display: 'flex', width: '100%' }}>
-            <Box component="div" className="navigator-menu" sx={{ height: '100hv' }}>
+            <Box component="div" className="navigator-menu">
                 <NavigatorMenu />
             </Box>
             <Box
                 component="main"
                 className="main-container"
-                sx={{ width: '100%', height: '93hv', display: 'flex', flexDirection: 'column' }}
+                sx={{ width: 'calc(100% - 240px)', display: 'flex', flexDirection: 'column', marginLeft: 'auto' }}
             >
                 <Header />
-                <Box component="div" sx={{ width: '100%', height: '100%', padding: '16px' }}>
-                    <Breadcrumbs className="breadcrumbs" separator="/" aria-label="breadcrumb">
-                        {breadcrumbs()}
-                    </Breadcrumbs>
+                <Box component="div" sx={{ width: '100%', height: '93vh', padding: '24px' }}>
+                    <Box component="div" sx={{ marginBottom: '22px' }}>
+                        <Breadcrumbs className="breadcrumbs" separator="/" aria-label="breadcrumb">
+                            {breadcrumbs()}
+                        </Breadcrumbs>
+                    </Box>
                     <Outlet />
                 </Box>
             </Box>

@@ -5,8 +5,8 @@ import Loadable from 'components/Loadable';
 import MainLayout from 'layout/MainLayout';
 import { Class } from 'pages/class/Class';
 import { CreateClass } from 'pages/class/CreateClass';
-import { Question } from 'pages/question/ListQuestion';
-import { CreateQuestion } from 'pages/question/CreateQuestion';
+import { Question } from 'pages/question/Question';
+import { CreateQuestion } from 'pages/question/CreateQuestion/index';
 import { Test } from 'pages/test/Test/index';
 import { CreateTest } from 'pages/test/CreateTest/index';
 
@@ -33,15 +33,20 @@ const MainRoutes = {
             element: <HomePage />
         },
         {
-            path: '/question',
+            path: 'question/create',
+            element: <CreateQuestion />
+        },
+        {
+            path: 'question',
             element: <Question />,
             children: [
                 {
-                    path: '/question/create',
+                    path: 'create',
                     element: <CreateQuestion />
                 }
             ]
         },
+
         {
             path: '/test',
             element: <Test />,
@@ -52,6 +57,7 @@ const MainRoutes = {
                 }
             ]
         },
+
         {
             path: '/class',
             element: <Class />,

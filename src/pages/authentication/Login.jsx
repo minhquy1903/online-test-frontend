@@ -4,25 +4,25 @@ import { Link } from 'react-router-dom';
 import { Grid, Stack, Typography } from '@mui/material';
 
 // project import
-import FirebaseRegister from './auth-forms/AuthRegister';
+import AuthLogin from './auth-forms/AuthLogin';
 import AuthWrapper from './AuthWrapper';
 
-const Register = () => (
+const Login = () => (
     <AuthWrapper>
         <Grid container spacing={3}>
             <Grid item xs={12}>
                 <Stack direction="row" justifyContent="space-between" alignItems="baseline" sx={{ mb: { xs: -0.5, sm: 0.5 } }}>
-                    <Typography variant="h3">Sign up</Typography>
-                    <Typography component={Link} to="/login" variant="body1" sx={{ textDecoration: 'none' }} color="primary">
-                        Already have an account?
+                    <Typography variant="h5">Login</Typography>
+                    <Typography component={Link} to="/register" variant="body1" sx={{ textDecoration: 'none' }} color="primary">
+                        Don&apos;t have an account?
                     </Typography>
                 </Stack>
             </Grid>
             <Grid item xs={12}>
-                <FirebaseRegister />
+                <AuthLogin />
             </Grid>
         </Grid>
     </AuthWrapper>
 );
 
-export default Register;
+export default Login;

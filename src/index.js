@@ -1,13 +1,9 @@
-import { createRoot } from 'react-dom/client';
-import 'simplebar/src/simplebar.css';
-import 'assets/third-party/apex-chart.css';
+import ReactDOM from 'react-dom/client';
+import React from 'react';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-// ==============================|| MAIN - REACT DOM RENDER  ||============================== //
-
-const container = document.getElementById('root');
-const root = createRoot(container);
+const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App />);
 
 reportWebVitals();

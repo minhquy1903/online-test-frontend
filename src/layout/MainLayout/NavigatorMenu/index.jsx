@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import HomeIcon from '@mui/icons-material/Home';
 import QuizIcon from '@mui/icons-material/Quiz';
@@ -38,22 +38,31 @@ const menuItems = [
 ];
 
 export default function NavigatorMenu() {
-    const [tab, setTab] = React.useState(0);
     const navigate = useNavigate();
+    const location = useLocation();
+    const calcTab = () => {
+        const path = location.pathname;
 
+        return menuItems.findIndex((item) => path.includes(item.path));
+    };
+
+    const [tab, setTab] = React.useState(calcTab());
+
+    calcTab();
     const handleChangeTab = (index, path) => {
         setTab(index);
         navigate(path);
     };
 
     return (
-        <div>
+        <>
             <div className="logo">
                 <Link to="/home">Online Test Logo</Link>
             </div>
             <div className="list-menu">
                 {menuItems.map((item, index) => (
                     <div
+                        key={index}
                         className={tab === index ? 'list-item-active' : 'list-item'}
                         onClick={() => handleChangeTab(index, item.path)}
                         aria-hidden="true"
@@ -63,6 +72,6 @@ export default function NavigatorMenu() {
                     </div>
                 ))}
             </div>
-        </div>
+        </>
     );
 }

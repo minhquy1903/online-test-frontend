@@ -44,7 +44,7 @@ const QuestionCreator = (props) => {
                                 <Grid item xs={12}>
                                     <div className="text-answer">
                                         <label className="label-question" htmlFor="question">
-                                            Question {props.tab + 1}
+                                            Question Description
                                         </label>
 
                                         <div className="textarea-input">

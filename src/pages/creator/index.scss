@@ -56,8 +56,26 @@
                 display: flex;
 
                 .test-form {
-                    margin-left: 16px;
+                    padding: 20px;
                     width: 15%;
+                    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+                    .test-input-group {
+                        display: flex;
+                        flex-direction: column;
+                        margin-bottom: 20px;
+                        label {
+                            font-weight: bold;
+                        }
+
+                        .input-item {
+                            display: block;
+                            padding: 10px;
+                            border: 1px solid rgb(204, 204, 204);
+                            border-radius: 4px;
+                            outline: none;
+                        }
+                    }
                 }
 
                 .question-form {

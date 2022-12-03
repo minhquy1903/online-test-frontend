@@ -2,17 +2,18 @@
     width: 100%;
     height: 7vh;
     display: flex;
-    padding: 0 40px;
+    padding: 0 60px;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid #f0f0f0;
-    .left {
-    }
 
     .right {
         display: flex;
+        height: 7vh;
+
         align-items: center;
         justify-content: space-between;
         width: 200px;
+        margin-left: auto;
     }
 }

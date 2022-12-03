@@ -3,6 +3,12 @@ import { redirect } from 'react-router-dom';
 
 import Loadable from 'components/Loadable';
 import MainLayout from 'layout/MainLayout';
+import { Class } from 'pages/class/Class';
+import { CreateClass } from 'pages/class/CreateClass';
+import { Question } from 'pages/question/ListQuestion';
+import { CreateQuestion } from 'pages/question/CreateQuestion';
+import { Test } from 'pages/test/Test/index';
+import { CreateTest } from 'pages/test/CreateTest/index';
 
 const HomePage = Loadable(lazy(() => import('pages/home')));
 
@@ -23,8 +29,38 @@ const MainRoutes = {
     element: <MainLayout />,
     children: [
         {
-            path: '/',
+            path: '/home',
             element: <HomePage />
+        },
+        {
+            path: '/question',
+            element: <Question />,
+            children: [
+                {
+                    path: '/question/create',
+                    element: <CreateQuestion />
+                }
+            ]
+        },
+        {
+            path: '/test',
+            element: <Test />,
+            children: [
+                {
+                    path: '/test/create',
+                    element: <CreateTest />
+                }
+            ]
+        },
+        {
+            path: '/class',
+            element: <Class />,
+            children: [
+                {
+                    path: '/class/create',
+                    element: <CreateClass />
+                }
+            ]
         },
         {
             path: 'color',

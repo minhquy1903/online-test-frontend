@@ -7,8 +7,6 @@ import { presetPalettes } from '@ant-design/colors';
 // project import
 import ThemeOption from './theme';
 
-// ==============================|| DEFAULT THEME - PALETTE  ||============================== //
-
 const Palette = (mode) => {
     const colors = presetPalettes;
 
@@ -26,7 +24,7 @@ const Palette = (mode) => {
         '#000000'
     ];
     const greyAscent = ['#fafafa', '#bfbfbf', '#434343', '#1f1f1f'];
-    const greyConstant = ['#fafafb', '#e6ebf1'];
+    const greyConstant = ['#f5f8fb', '#e6ebf1'];
 
     colors.grey = [...greyPrimary, ...greyAscent, ...greyConstant];
 

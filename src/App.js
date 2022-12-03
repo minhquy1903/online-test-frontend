@@ -12,22 +12,20 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => (
-    <ThemeCustomization>
-        <Provider store={store}>
-            <ToastContainer
-                position="top-right"
-                autoClose={3000}
-                hideProgressBar={true}
-                newestOnTop={false}
-                pauseOnFocusLoss
-                pauseOnHover
-                theme="light"
-            />
-            <PersistGate loading={null} persistor={persistor}>
-                <RouterProvider router={router} />
-            </PersistGate>
-        </Provider>
-    </ThemeCustomization>
+    <Provider store={store}>
+        <ToastContainer
+            position="top-right"
+            autoClose={3000}
+            hideProgressBar={true}
+            newestOnTop={false}
+            pauseOnFocusLoss
+            pauseOnHover
+            theme="light"
+        />
+        <PersistGate loading={null} persistor={persistor}>
+            <RouterProvider router={router} />
+        </PersistGate>
+    </Provider>
 );
 
 export default App;

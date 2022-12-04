@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { getLocalStorage } from 'utils/localStorage';
 
 const axiosClient = axios.create({
     baseURL: 'http://localhost:8000/api/',
@@ -9,11 +10,12 @@ const axiosClient = axios.create({
 
 // Add a request interceptor
 axiosClient.interceptors.request.use(
-    function (config) {
+    (config) => {
         // Do something before request is sent
+        config.headers.authorization = `Bearer ${getLocalStorage('access-token')}`;
         return config;
     },
-    function (error) {
+    (error) => {
         // Do something with request error
         return Promise.reject(error);
     }
@@ -21,10 +23,10 @@ axiosClient.interceptors.request.use(
 
 // Add a response interceptor
 axiosClient.interceptors.response.use(
-    function (response) {
+    (response) => {
         return response.data;
     },
-    function (error) {
+    (error) => {
         // Any status codes that falls outside the range of 2xx cause this function to trigger
         // Do something with response error
         return Promise.reject(error);

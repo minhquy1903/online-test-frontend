@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ToolBox } from './ToolBox';
 import { Link, Outlet } from 'react-router-dom';
 
@@ -6,10 +6,12 @@ import { DataGrid } from '@mui/x-data-grid';
 
 import './index.scss';
 import { Button, Stack, Box } from '@mui/material';
+import { useDispatch, useSelector } from 'react-redux';
+import { questionActions } from 'redux/slides/questionSlice';
 
 const columns = [
     { field: 'id', headerName: 'ID', flex: 0.5 },
-    { field: 'title', headerName: 'Title', flex: 10, sortable: false },
+    { field: 'question', headerName: 'question', flex: 10, sortable: false },
     { field: 'type', headerName: 'Type', flex: 1.5, sortable: false },
     {
         field: 'subject',
@@ -20,7 +22,6 @@ const columns = [
     {
         field: 'action',
         headerName: 'Action',
-        // sortable: false,
         flex: 3,
         renderCell: () => {
             return (
@@ -50,11 +51,18 @@ const rows = [
 ];
 
 export const Question = () => {
+    const dispatch = useDispatch();
+    const questions = useSelector((state) => state.question.questions);
+
+    useEffect(() => {
+        dispatch(questionActions.getQuestions({}));
+    }, [dispatch]);
+
     return (
         <Box>
             <ToolBox />
             <Box sx={{ height: 'auto', overflow: 'auto', width: '100%', marginTop: 2 }}>
-                <DataGrid rows={rows} columns={columns} pageSize={10} checkboxSelection disableColumnMenu autoHeight={true} />
+                <DataGrid rows={questions} columns={columns} pageSize={10} checkboxSelection disableColumnMenu autoHeight={true} />
             </Box>
             {/* <Outlet /> */}
         </Box>
